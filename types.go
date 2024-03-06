@@ -28,7 +28,7 @@ func (p Platform) String() string {
 	case 4:
 		return "Rail"
 	case 16:
-		return "XBOne"
+		return "XBone"
 	case 19:
 		return "PS4Official"
 	case 32:
