@@ -64,13 +64,17 @@ type Server struct {
 	Guid  string `json:"guid"`
 	RowId string `json:"__rowId"`
 	// only at steam platform
-	SteamId   string   `json:"steamid"`
-	SteamRoom string   `json:"steamroom"`
-	Session   string   `json:"session"`
-	Address   string   `json:"__addr"`
-	Port      int      `json:"port"`
-	Host      string   `json:"host"`
-	Platform  Platform `json:"platform"`
+	SteamId string `json:"steamid"`
+	// only for clan server
+	SteamClanId string `json:"steamclanid"`
+	// only for no password server
+	OwnerNetId string   `json:"ownernetid"`
+	SteamRoom  string   `json:"steamroom"`
+	Session    string   `json:"session"`
+	Address    string   `json:"__addr"`
+	Port       int      `json:"port"`
+	Host       string   `json:"host"`
+	Platform   Platform `json:"platform"`
 
 	ClanOnly bool `json:"clanonly"`
 	LanOnly  bool `json:"lanonly"`

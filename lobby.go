@@ -5,7 +5,6 @@ import (
 	"errors"
 	"github.com/go-resty/resty/v2"
 	"net/http"
-	"strings"
 )
 
 // Open returns a new instance of lobby client with klei token
@@ -69,10 +68,6 @@ func (c *Client) GetLobbyServers(region string, platform string) (Servers, error
 		return Servers{}, err
 	}
 
-	for i, server := range servers.List {
-		servers.List[i].Tags = strings.Split(server.TagStr, ",")
-	}
-
 	return servers, nil
 }
 
@@ -125,7 +120,6 @@ func (c *Client) GetServerDetails(region string, rowId string) (ServerDetails, e
 
 	if len(detailResp.List) > 0 {
 		details := detailResp.List[0]
-		details.Tags = strings.Split(details.TagStr, ",")
 		// parse lua script
 		return parsedLuaDetails(details)
 	}
