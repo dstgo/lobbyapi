@@ -6,7 +6,7 @@ import (
 )
 
 func TestLobbyRegions(t *testing.T) {
-	client := Open("")
+	client := New("")
 	regions, err := client.GetCapableRegions()
 	if err != nil {
 		t.Error(err)
@@ -16,7 +16,7 @@ func TestLobbyRegions(t *testing.T) {
 }
 
 func TestLobbyServersOk(t *testing.T) {
-	client := Open("")
+	client := New("")
 	servers, err := client.GetLobbyServers("ap-east-1", Steam.String())
 	if err != nil {
 		t.Error(err)
@@ -26,7 +26,7 @@ func TestLobbyServersOk(t *testing.T) {
 }
 
 func TestLobbyServersFailed(t *testing.T) {
-	client := Open("")
+	client := New("")
 	servers, err := client.GetLobbyServers("unknown", Steam.String())
 	if err == nil {
 		t.Error(errors.New("error must be non-nil"))
@@ -37,7 +37,7 @@ func TestLobbyServersFailed(t *testing.T) {
 }
 
 func TestServerDetails(t *testing.T) {
-	client := Open("klei Token")
+	client := New("klei Token")
 	servers, err := client.GetServerDetails("ap-east-1", "KU_nnMF5SAo")
 	if err != nil {
 		t.Error(err)

@@ -7,12 +7,12 @@ import (
 	"net/http"
 )
 
-// Open returns a new instance of lobby client with klei token
-func Open(token string) *Client {
+// New returns a new instance of lobby client with klei token
+func New(token string) *Client {
 	return &Client{client: resty.New(), token: token}
 }
 
-func OpenWith(token string, client *resty.Client) *Client {
+func NewWith(token string, client *resty.Client) *Client {
 	return &Client{client: client, token: token}
 }
 

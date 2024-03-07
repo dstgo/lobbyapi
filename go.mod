@@ -1,4 +1,4 @@
-module github.com/dstgo/lobby
+module github.com/dstgo/lobbyapi
 
 go 1.22
 
