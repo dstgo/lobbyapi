@@ -4,7 +4,7 @@
 
 ## install
 ```bash
-go get -u github.com/dstgo/lobby
+go get -u github.com/dstgo/lobbyapi
 ```
 
 ## use
@@ -17,11 +17,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/dstgo/lobby"
+	"github.com/dstgo/lobbyapi"
 )
 
 func main() {
-	lobbyclient := lobby.Open("no need klei token")
+	lobbyclient := lobbyapi.New("no need klei token")
 	capableRegions, err := lobbyclient.GetCapableRegions()
 	if err != nil {
 		panic(err)
@@ -48,11 +48,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/dstgo/lobby"
+	"github.com/dstgo/lobbyapi"
 )
 
 func main() {
-	lobbyclient := lobby.Open("no need klei token")
+	lobbyclient := lobbyapi.New("no need klei token")
 	list, err := lobbyclient.GetLobbyServers("ap-east-1","Steam")
 	if err != nil {
 		panic(err)
@@ -69,11 +69,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/dstgo/lobby"
+	"github.com/dstgo/lobbyapi"
 )
 
 func main() {
-	lobbyclient := lobby.Open("klei token")
+	lobbyclient := lobbyapi.New("klei token")
 	details, err := lobbyclient.GetServerDetails("ap-east-1","xxxxx")
 	if err != nil {
 		panic(err)
