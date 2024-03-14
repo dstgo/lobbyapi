@@ -1,8 +1,8 @@
 package lobbyapi
 
 import (
-	"encoding/json"
 	"errors"
+	"github.com/bytedance/sonic"
 	"github.com/go-resty/resty/v2"
 	"net/http"
 )
@@ -36,7 +36,7 @@ func (c *Client) GetCapableRegions() (Regions, error) {
 	}
 
 	var regions Regions
-	if err := json.Unmarshal(response.Body(), &regions); err != nil {
+	if err := sonic.Unmarshal(response.Body(), &regions); err != nil {
 		return Regions{}, err
 	}
 	return regions, err
@@ -64,7 +64,7 @@ func (c *Client) GetLobbyServers(region string, platform string) (Servers, error
 	}
 
 	var servers Servers
-	if err := json.Unmarshal(response.Body(), &servers); err != nil {
+	if err := sonic.Unmarshal(response.Body(), &servers); err != nil {
 		return Servers{}, err
 	}
 
@@ -94,7 +94,7 @@ func (c *Client) GetServerDetails(region string, rowId string) (ServerDetails, e
 		},
 	}
 
-	bytes, err := json.Marshal(body)
+	bytes, err := sonic.Marshal(body)
 	if err != nil {
 		return ServerDetails{}, err
 	}
@@ -114,7 +114,7 @@ func (c *Client) GetServerDetails(region string, rowId string) (ServerDetails, e
 		List []ServerDetails `json:"GET"`
 	}
 
-	if err := json.Unmarshal(response.Body(), &detailResp); err != nil {
+	if err := sonic.Unmarshal(response.Body(), &detailResp); err != nil {
 		return ServerDetails{}, err
 	}
 
