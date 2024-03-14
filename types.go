@@ -88,8 +88,7 @@ type Server struct {
 	Intent   string `json:"intent"`
 	Season   string `json:"season"`
 	TagStr   string `json:"tags"`
-	Tags     []string
-	Version  int `json:"v"`
+	Version  int    `json:"v"`
 	// max players allowed
 	MaxConnections int `json:"maxconnections"`
 	// online players number
