@@ -102,6 +102,10 @@ type Server struct {
 	AllowNewPlayers bool `json:"allownewplayers"`
 	ServerPaused    bool `json:"serverpaused"`
 	FriendOnly      bool `json:"fo"`
+
+	// processed info
+	Region string   `json:"region"`
+	Tags   []string `json:"tag_arr"`
 }
 
 // Secondaries represents the secondaries shard among dst servers

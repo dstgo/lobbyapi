@@ -5,6 +5,7 @@ import (
 	"github.com/bytedance/sonic"
 	"github.com/go-resty/resty/v2"
 	"net/http"
+	"strings"
 )
 
 // New returns a new instance of lobby client with klei token
@@ -68,6 +69,13 @@ func (c *Client) GetLobbyServers(region string, platform string) (Servers, error
 		return Servers{}, err
 	}
 
+	for _, server := range servers.List {
+		server.Region = region
+		if server.TagStr != "" {
+			server.Tags = strings.Split(server.TagStr, ",")
+		}
+	}
+
 	return servers, nil
 }
 
@@ -120,6 +128,10 @@ func (c *Client) GetServerDetails(region string, rowId string) (ServerDetails, e
 
 	if len(detailResp.List) > 0 {
 		details := detailResp.List[0]
+		details.Region = region
+		if details.TagStr != "" {
+			details.Tags = strings.Split(details.TagStr, ",")
+		}
 		// parse lua script
 		return parsedLuaDetails(details)
 	}

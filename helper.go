@@ -136,3 +136,11 @@ func parseModsInfo(mods []any) []Mod {
 
 	return res
 }
+
+func PlatformDisplayName(region string, platform Platform) string {
+	// WeGame only supported in CN
+	if region == ApEast && platform == Rail {
+		return "WeGame"
+	}
+	return platform.String()
+}
