@@ -117,21 +117,21 @@ type Servers struct {
 }
 
 type Player struct {
-	Name    string
-	Prefab  string
-	SteamId string
+	Name    string `json:"name"`
+	Prefab  string `json:"prefab"`
+	SteamId string `json:"steamId"`
 	// hex color code
-	Colour string
+	Colour string `json:"colour"`
 	// shard level
-	Level int
+	Level int `json:"level"`
 }
 
 type Mod struct {
-	Id       string
-	Name     string
-	Version1 string
-	Version2 string
-	Enabled  bool
+	Id       string `json:"id"`
+	Name     string `json:"name"`
+	Version1 string `json:"version1"`
+	Version2 string `json:"version2"`
+	Enabled  bool   `json:"enabled"`
 }
 
 // ServerDetails includes some details information
@@ -150,11 +150,13 @@ type ServerDetails struct {
 	Mods          []any  `json:"mods_info"`
 
 	// parsed lua data
-	Details struct {
-		Day                int
-		DayElapsedInSeason int
-		DaysLeftInSeason   int
-		Players            []Player
-		ModsInfo           []Mod
-	}
+	Details MetaInfo `json:"details"`
+}
+
+type MetaInfo struct {
+	Day                int      `json:"day"`
+	DayElapsedInSeason int      `json:"dayElapsedInSeason"`
+	DaysLeftInSeason   int      `json:"daysLeftInSeason"`
+	Players            []Player `json:"players"`
+	ModsInfo           []Mod    `json:"mods"`
 }
