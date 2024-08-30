@@ -69,10 +69,10 @@ func (c *Client) GetLobbyServers(region string, platform string) (Servers, error
 		return Servers{}, err
 	}
 
-	for _, server := range servers.List {
-		server.Region = region
+	for i, server := range servers.List {
+		servers.List[i].Region = region
 		if server.TagStr != "" {
-			server.Tags = strings.Split(server.TagStr, ",")
+			servers.List[i].Tags = strings.Split(server.TagStr, ",")
 		}
 	}
 
